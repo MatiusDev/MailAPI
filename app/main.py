@@ -9,7 +9,7 @@ from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
 import os
 
-from models.mail import Mail
+from .models.mail import Mail
 
 load_dotenv()
 
