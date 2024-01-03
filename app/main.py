@@ -15,7 +15,7 @@ load_dotenv()
 
 app = FastAPI()
 
-origins = ["*", "https://matiusdev.github.io/portafolio/"]
+origins = ["*"]
 app.add_middleware(
   CORSMiddleware,
   allow_origins=origins,
@@ -23,10 +23,6 @@ app.add_middleware(
   allow_methods=["*"],
   allow_headers=["*"],
 )
-
-@app.get("/")
-async def get():
-  return "Hello World"
 
 @app.post("/sendmail")
 async def send_email(mail: Mail):
