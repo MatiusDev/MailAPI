@@ -24,6 +24,10 @@ app.add_middleware(
   allow_headers=["*"],
 )
 
+@app.get("/")
+async def get():
+  return JSONResponse(content={"msg": "Consulta Ok", "status": "ok"}, status_code=200)
+
 @app.post("/sendmail")
 async def send_email(mail: Mail):
   try:
