@@ -19,14 +19,14 @@ origins = ["https://matiusdev.github.io"]
 app.add_middleware(
   CORSMiddleware,
   allow_origins=origins,
-  allow_credentials=True,
+  allow_credentials=False,
   allow_methods=["GET", "POST"],
   allow_headers=["*"],
 )
 
 @app.get("/")
 async def get():
-  return JSONResponse(content={"msg": "Consulta Ok", "status": "ok"}, status_code=200)
+  return JSONResponse(content={"msg": "Consulta de prueba OK", "status": "ok"}, status_code=200)
 
 @app.post("/sendmail")
 async def send_email(mail: Mail):
