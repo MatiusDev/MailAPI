@@ -19,8 +19,8 @@ origins = ["https://matiusdev.github.io"]
 app.add_middleware(
   CORSMiddleware,
   allow_origins=origins,
-  allow_credentials=False,
-  allow_methods=["GET", "POST"],
+  allow_credentials=True,
+  allow_methods=["*"],
   allow_headers=["*"],
 )
 
