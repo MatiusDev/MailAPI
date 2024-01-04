@@ -15,7 +15,7 @@ load_dotenv()
 
 app = FastAPI()
 
-origins = ["https://matiusdev.github.io"]
+origins = ["*", "https://matiusdev.github.io"]
 app.add_middleware(
   CORSMiddleware,
   allow_origins=origins,
