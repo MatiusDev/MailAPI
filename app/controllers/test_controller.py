@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
-from ..services.test_service import get_content
+from app.services.test_service import get_content
 
 router = APIRouter()
 
