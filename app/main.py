@@ -2,19 +2,28 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
-from app.controllers import test_controller
+from app.middlewares.check_origin_middleware import CheckOriginMiddleware
+from app.middlewares.api_key_middleware import ApiKeyMiddleware
+from app.controllers.test_controller import router as test_router
 
 load_dotenv()
 
 app = FastAPI()
 
-origins = ["https://matiusdev.github.io"]
+origins = ["https://matiusdev.github.io", "localhost:8000"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["GET", "POST"],
-    allow_headers=["*"],
+    allow_headers=["Content-Type", "X-API-KEY"],
 )
 
-app.include_router(test_controller)
+app.add_middleware(
+  CheckOriginMiddleware, 
+  allowed_hosts=origins,
+)
+
+app.add_middleware(ApiKeyMiddleware)
+
+app.include_router(test_router)
