@@ -11,9 +11,9 @@ class CheckOriginMiddleware(BaseHTTPMiddleware):
     super().__init__(app)
   
   async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:
-    host = request.headers.get("host")
+    origin = request.headers.get("origin")
         
-    if host not in self.allowed_hosts:
+    if origin not in self.allowed_hosts:
       content = { "error": "Host no permitido", "status": "fail" }
       return JSONResponse(content=content, status_code=401)
     
